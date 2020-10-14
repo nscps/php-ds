@@ -57,6 +57,22 @@ class AbstractArrayTest extends AbstractTestCase
      * @dataProvider validAssocArraysProvider
      * @param array $arr
      */
+    public function testContains(array $arr)
+    {
+        $mdArray = new AssocArray($arr['array']);
+
+        foreach ($arr['array'] as $key => $value) {
+            $this->assertTrue($mdArray->contains($value));
+        }
+
+        $this->assertFalse($mdArray->contains('invalid-value'));
+    }
+
+    /**
+     * @test
+     * @dataProvider validAssocArraysProvider
+     * @param array $arr
+     */
     public function testCount(array $arr)
     {
         $mdArray = new AssocArray($arr['array']);

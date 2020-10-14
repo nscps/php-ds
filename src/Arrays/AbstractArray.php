@@ -40,6 +40,15 @@ abstract class AbstractArray implements \Countable, \IteratorAggregate
     }
 
     /**
+     * @param $value
+     * @return bool
+     */
+    public function contains($value): bool
+    {
+        return in_array($value, $this->arr);
+    }
+
+    /**
      * @return int
      */
     public function count()
