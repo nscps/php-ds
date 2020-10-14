@@ -1,0 +1,11 @@
+version: '3.7'
+
+services:
+    # php
+    php:
+        container_name: 'nscps.ds.php'
+        image: nscps/php:7.4-fpm
+        tty: true
+        volumes:
+            - ./:/app
+        working_dir: /app
