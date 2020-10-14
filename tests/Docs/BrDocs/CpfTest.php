@@ -41,17 +41,17 @@ class CpfTest extends AbstractTestCase
             ['888.888.888-88'],
             ['999.999.999-99'],
 
-            // c1 is invalid
+            // d1 is invalid
             ['484.546.920-12'],
             ['572.933.420-13'],
 
-            // c2 is invalid
+            // d2 is invalid
             ['484.546.920-00'],
             ['484.546.920-01'],
             ['572.933.420-62'],
             ['572.933.420-64'],
 
-            // c1 and c2 are invalid
+            // d1 and d2 are invalid
             ['484.546.920-13'],
             ['572.933.420-74'],
         ];
@@ -129,7 +129,7 @@ class CpfTest extends AbstractTestCase
      * @dataProvider validCpfProvider
      * @param string $str
      */
-    public function testGetFormatted($str)
+    public function testGetCpf($str)
     {
         $cpf = new Cpf($str);
 
