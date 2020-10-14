@@ -62,4 +62,28 @@ class AssocArrayTest extends AbstractTestCase
         $this->assertEquals(4, $arrObj->get('four'));
     }
 
+    /**
+     * @test
+     * @dataProvider validAssocArraysProvider
+     * @param array $arr
+     */
+    public function testRemove(array $arr)
+    {
+        $arrObj = new AssocArray($arr['array']);
+
+        $this->assertFalse($arrObj->has('four'));
+
+        $this->assertSame($arrObj, $arrObj->set('four', 4));
+
+        $this->assertTrue($arrObj->has('four'));
+
+        $this->assertCount($arr['count'] + 1, $arrObj);
+
+        $this->assertSame($arrObj, $arrObj->remove('four'));
+
+        $this->assertFalse($arrObj->has('four'));
+
+        $this->assertCount($arr['count'], $arrObj);
+    }
+
 }

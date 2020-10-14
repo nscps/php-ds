@@ -35,4 +35,16 @@ class AssocArray extends AbstractArray
         return $this;
     }
 
+    /**
+     * @param string $key
+     * @return $this
+     */
+    public function remove(string $key): AssocArray
+    {
+        if ($this->has($key)) {
+            unset($this->arr[$key]);
+        }
+        return $this;
+    }
+
 }
