@@ -100,7 +100,7 @@ class Cpf
      * @param int $c
      * @return int
      */
-	private function getDigit($c): int
+	private function getDigit(int $c): int
 	{
 		return $c % 11 < 2 ? 0 : 11 - ($c % 11);
 	}

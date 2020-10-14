@@ -76,13 +76,11 @@ class Pis
 	}
 
     /**
-     * @param string $pis
+     * @param int $c1
      * @return int
      */
-	private function getD1(string $pis): int
+	private function getDigit(int $c1): int
 	{
-		$c1 = $this->getC1($pis);
-		
 		return $c1 % 11 < 2 ? 0 : 11 - ($c1 % 11);
 	}
 
@@ -107,7 +105,8 @@ class Pis
 		}
 		
 		// Validate D1
-		$d1 = $this->getD1($pis);
+        $c1 = $this->getC1($pis);
+		$d1 = $this->getDigit($c1);
 		if ($d1 != $pis[10]) {
 			throw new \InvalidArgumentException('Invalid PIS.');
 		}
