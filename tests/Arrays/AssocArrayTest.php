@@ -8,56 +8,7 @@ use Nscps\Ds\Tests\AbstractTestCase;
 class AssocArrayTest extends AbstractTestCase
 {
 
-    /**
-     * @return array
-     */
-    public function validAssocArraysProvider()
-    {
-        $empty_array = [
-            'array' => [],
-            'count' => 0,
-        ];
-
-        $md_array = [
-            'array' => [
-                'one' => 1,
-                'two' => 2,
-                'three' => 3,
-            ],
-            'count' => 3,
-        ];
-
-        return [
-            [$empty_array],
-            [$md_array],
-        ];
-    }
-
-    /**
-     * @test
-     * @dataProvider validAssocArraysProvider
-     * @param array $arr
-     */
-    public function testConstructor(array $arr)
-    {
-        $mdArray = new AssocArray($arr['array']);
-
-        $this->assertEquals($arr['array'], $mdArray->getData());
-    }
-
-    /**
-     * @test
-     * @dataProvider validAssocArraysProvider
-     * @param array $arr
-     */
-    public function testSetAndGetData(array $arr)
-    {
-        $mdArray = new AssocArray();
-
-        $this->assertSame($mdArray, $mdArray->setData($arr['array']));
-
-        $this->assertEquals($arr['array'], $mdArray->getData());
-    }
+    use ArrayProvidersTrait;
 
     /**
      * @test
@@ -109,34 +60,6 @@ class AssocArrayTest extends AbstractTestCase
         $this->assertTrue($mdArray->has('four'));
 
         $this->assertEquals(4, $mdArray->get('four'));
-    }
-
-    /**
-     * @test
-     * @dataProvider validAssocArraysProvider
-     * @param array $arr
-     */
-    public function testCount(array $arr)
-    {
-        $mdArray = new AssocArray($arr['array']);
-
-        $this->assertCount($arr['count'], $mdArray);
-    }
-
-    /**
-     * @test
-     * @dataProvider validAssocArraysProvider
-     * @param array $arr
-     */
-    public function testGetIterator(array $arr)
-    {
-        $mdArray = new AssocArray($arr['array']);
-
-        $this->assertInstanceOf(\ArrayIterator::class, $mdArray->getIterator());
-
-        foreach ($mdArray as $key => $value) {
-            $this->assertEquals($value, $arr['array'][$key]);
-        }
     }
 
 }

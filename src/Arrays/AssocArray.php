@@ -2,42 +2,8 @@
 
 namespace Nscps\Ds\Arrays;
 
-use Traversable;
-
-class AssocArray implements \Countable, \IteratorAggregate
+class AssocArray extends AbstractArray
 {
-
-    /**
-     * @var array
-     */
-    private array $arr;
-
-    /**
-     * AssocArray constructor.
-     * @param array $arr
-     */
-    public function __construct(array $arr = [])
-    {
-        $this->arr = $arr;
-    }
-
-    /**
-     * @return array
-     */
-    public function getData(): array
-    {
-        return $this->arr;
-    }
-
-    /**
-     * @param array $arr
-     * @return AssocArray
-     */
-    public function setData(array $arr): AssocArray
-    {
-        $this->arr = $arr;
-        return $this;
-    }
 
     /**
      * @param string $key
@@ -67,22 +33,6 @@ class AssocArray implements \Countable, \IteratorAggregate
     {
         $this->arr[$key] = $value;
         return $this;
-    }
-
-    /**
-     * @return int
-     */
-    public function count()
-    {
-        return count($this->arr);
-    }
-
-    /**
-     * @return \ArrayIterator|Traversable
-     */
-    public function getIterator()
-    {
-        return new \ArrayIterator($this->arr);
     }
 
 }
