@@ -4,7 +4,7 @@ namespace Nscps\Ds\Arrays;
 
 use Traversable;
 
-class MultiDimensionalArray implements \Countable, \IteratorAggregate
+class AssocArray implements \Countable, \IteratorAggregate
 {
 
     /**
@@ -13,7 +13,7 @@ class MultiDimensionalArray implements \Countable, \IteratorAggregate
     private array $arr;
 
     /**
-     * MultiDimensionalArray constructor.
+     * AssocArray constructor.
      * @param array $arr
      */
     public function __construct(array $arr = [])
@@ -31,9 +31,9 @@ class MultiDimensionalArray implements \Countable, \IteratorAggregate
 
     /**
      * @param array $arr
-     * @return MultiDimensionalArray
+     * @return AssocArray
      */
-    public function setData(array $arr): MultiDimensionalArray
+    public function setData(array $arr): AssocArray
     {
         $this->arr = $arr;
         return $this;
@@ -63,7 +63,7 @@ class MultiDimensionalArray implements \Countable, \IteratorAggregate
      * @param $value
      * @return $this
      */
-    public function set(string $key, $value): MultiDimensionalArray
+    public function set(string $key, $value): AssocArray
     {
         $this->arr[$key] = $value;
         return $this;

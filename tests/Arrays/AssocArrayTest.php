@@ -2,16 +2,16 @@
 
 namespace Nscps\Ds\Tests\Arrays;
 
-use Nscps\Ds\Arrays\MultiDimensionalArray;
+use Nscps\Ds\Arrays\AssocArray;
 use Nscps\Ds\Tests\AbstractTestCase;
 
-class MultiDimensionalArrayTest extends AbstractTestCase
+class AssocArrayTest extends AbstractTestCase
 {
 
     /**
      * @return array
      */
-    public function validMultiDimensionalArraysProvider()
+    public function validAssocArraysProvider()
     {
         $empty_array = [
             'array' => [],
@@ -35,24 +35,24 @@ class MultiDimensionalArrayTest extends AbstractTestCase
 
     /**
      * @test
-     * @dataProvider validMultiDimensionalArraysProvider
+     * @dataProvider validAssocArraysProvider
      * @param array $arr
      */
     public function testConstructor(array $arr)
     {
-        $mdArray = new MultiDimensionalArray($arr['array']);
+        $mdArray = new AssocArray($arr['array']);
 
         $this->assertEquals($arr['array'], $mdArray->getData());
     }
 
     /**
      * @test
-     * @dataProvider validMultiDimensionalArraysProvider
+     * @dataProvider validAssocArraysProvider
      * @param array $arr
      */
     public function testSetAndGetData(array $arr)
     {
-        $mdArray = new MultiDimensionalArray();
+        $mdArray = new AssocArray();
 
         $this->assertSame($mdArray, $mdArray->setData($arr['array']));
 
@@ -61,12 +61,12 @@ class MultiDimensionalArrayTest extends AbstractTestCase
 
     /**
      * @test
-     * @dataProvider validMultiDimensionalArraysProvider
+     * @dataProvider validAssocArraysProvider
      * @param array $arr
      */
     public function testHas(array $arr)
     {
-        $mdArray = new MultiDimensionalArray($arr['array']);
+        $mdArray = new AssocArray($arr['array']);
 
         foreach ($arr['array'] as $key => $value) {
             $this->assertTrue($mdArray->has($key));
@@ -77,12 +77,12 @@ class MultiDimensionalArrayTest extends AbstractTestCase
 
     /**
      * @test
-     * @dataProvider validMultiDimensionalArraysProvider
+     * @dataProvider validAssocArraysProvider
      * @param array $arr
      */
     public function testGet(array $arr)
     {
-        $mdArray = new MultiDimensionalArray($arr['array']);
+        $mdArray = new AssocArray($arr['array']);
 
         foreach ($arr['array'] as $key => $value) {
             $this->assertEquals($value, $mdArray->get($key));
@@ -95,12 +95,12 @@ class MultiDimensionalArrayTest extends AbstractTestCase
 
     /**
      * @test
-     * @dataProvider validMultiDimensionalArraysProvider
+     * @dataProvider validAssocArraysProvider
      * @param array $arr
      */
     public function testSet(array $arr)
     {
-        $mdArray = new MultiDimensionalArray($arr['array']);
+        $mdArray = new AssocArray($arr['array']);
 
         $this->assertFalse($mdArray->has('four'));
 
@@ -113,24 +113,24 @@ class MultiDimensionalArrayTest extends AbstractTestCase
 
     /**
      * @test
-     * @dataProvider validMultiDimensionalArraysProvider
+     * @dataProvider validAssocArraysProvider
      * @param array $arr
      */
     public function testCount(array $arr)
     {
-        $mdArray = new MultiDimensionalArray($arr['array']);
+        $mdArray = new AssocArray($arr['array']);
 
         $this->assertCount($arr['count'], $mdArray);
     }
 
     /**
      * @test
-     * @dataProvider validMultiDimensionalArraysProvider
+     * @dataProvider validAssocArraysProvider
      * @param array $arr
      */
     public function testGetIterator(array $arr)
     {
-        $mdArray = new MultiDimensionalArray($arr['array']);
+        $mdArray = new AssocArray($arr['array']);
 
         $this->assertInstanceOf(\ArrayIterator::class, $mdArray->getIterator());
 
