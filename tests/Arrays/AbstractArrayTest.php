@@ -33,9 +33,9 @@ class AbstractArrayTest extends AbstractTestCase
      */
     public function testConstructor(array $arr)
     {
-        $mdArray = new AssocArray($arr['array']);
+        $arrObj = new AssocArray($arr['array']);
 
-        $this->assertEquals($arr['array'], $mdArray->getArray());
+        $this->assertEquals($arr['array'], $arrObj->getArray());
     }
 
     /**
@@ -45,11 +45,11 @@ class AbstractArrayTest extends AbstractTestCase
      */
     public function testSetAndGetData(array $arr)
     {
-        $mdArray = new AssocArray();
+        $arrObj = new AssocArray();
 
-        $this->assertSame($mdArray, $mdArray->setArray($arr['array']));
+        $this->assertSame($arrObj, $arrObj->setArray($arr['array']));
 
-        $this->assertEquals($arr['array'], $mdArray->getArray());
+        $this->assertEquals($arr['array'], $arrObj->getArray());
     }
 
     /**
@@ -59,13 +59,13 @@ class AbstractArrayTest extends AbstractTestCase
      */
     public function testContains(array $arr)
     {
-        $mdArray = new AssocArray($arr['array']);
+        $arrObj = new AssocArray($arr['array']);
 
         foreach ($arr['array'] as $key => $value) {
-            $this->assertTrue($mdArray->contains($value));
+            $this->assertTrue($arrObj->contains($value));
         }
 
-        $this->assertFalse($mdArray->contains('invalid-value'));
+        $this->assertFalse($arrObj->contains('invalid-value'));
     }
 
     /**
@@ -75,9 +75,9 @@ class AbstractArrayTest extends AbstractTestCase
      */
     public function testCount(array $arr)
     {
-        $mdArray = new AssocArray($arr['array']);
+        $arrObj = new AssocArray($arr['array']);
 
-        $this->assertCount($arr['count'], $mdArray);
+        $this->assertCount($arr['count'], $arrObj);
     }
 
     /**
@@ -87,11 +87,11 @@ class AbstractArrayTest extends AbstractTestCase
      */
     public function testGetIterator(array $arr)
     {
-        $mdArray = new AssocArray($arr['array']);
+        $arrObj = new AssocArray($arr['array']);
 
-        $this->assertInstanceOf(\ArrayIterator::class, $mdArray->getIterator());
+        $this->assertInstanceOf(\ArrayIterator::class, $arrObj->getIterator());
 
-        foreach ($mdArray as $key => $value) {
+        foreach ($arrObj as $key => $value) {
             $this->assertEquals($value, $arr['array'][$key]);
         }
     }

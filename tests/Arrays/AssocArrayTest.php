@@ -17,13 +17,13 @@ class AssocArrayTest extends AbstractTestCase
      */
     public function testHas(array $arr)
     {
-        $mdArray = new AssocArray($arr['array']);
+        $arrObj = new AssocArray($arr['array']);
 
         foreach ($arr['array'] as $key => $value) {
-            $this->assertTrue($mdArray->has($key));
+            $this->assertTrue($arrObj->has($key));
         }
 
-        $this->assertFalse($mdArray->has('invalid_key'));
+        $this->assertFalse($arrObj->has('invalid_key'));
     }
 
     /**
@@ -33,15 +33,15 @@ class AssocArrayTest extends AbstractTestCase
      */
     public function testGet(array $arr)
     {
-        $mdArray = new AssocArray($arr['array']);
+        $arrObj = new AssocArray($arr['array']);
 
         foreach ($arr['array'] as $key => $value) {
-            $this->assertEquals($value, $mdArray->get($key));
+            $this->assertEquals($value, $arrObj->get($key));
         }
 
-        $this->assertNull($mdArray->get('invalid_key'));
-        $this->assertFalse($mdArray->get('invalid_key', false));
-        $this->assertEquals(123, $mdArray->get('invalid_key', 123));
+        $this->assertNull($arrObj->get('invalid_key'));
+        $this->assertFalse($arrObj->get('invalid_key', false));
+        $this->assertEquals(123, $arrObj->get('invalid_key', 123));
     }
 
     /**
@@ -51,15 +51,15 @@ class AssocArrayTest extends AbstractTestCase
      */
     public function testSet(array $arr)
     {
-        $mdArray = new AssocArray($arr['array']);
+        $arrObj = new AssocArray($arr['array']);
 
-        $this->assertFalse($mdArray->has('four'));
+        $this->assertFalse($arrObj->has('four'));
 
-        $this->assertSame($mdArray, $mdArray->set('four', 4));
+        $this->assertSame($arrObj, $arrObj->set('four', 4));
 
-        $this->assertTrue($mdArray->has('four'));
+        $this->assertTrue($arrObj->has('four'));
 
-        $this->assertEquals(4, $mdArray->get('four'));
+        $this->assertEquals(4, $arrObj->get('four'));
     }
 
 }
