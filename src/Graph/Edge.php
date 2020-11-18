@@ -26,7 +26,7 @@ class Edge implements EdgeInterface
      * @param NodeInterface $to
      * @param mixed $weight
      */
-    public function __construct(NodeInterface $from, NodeInterface $to, $weight = 0)
+    public function __construct(NodeInterface $from, NodeInterface $to, $weight)
     {
         $this->from = $from;
         $this->to = $to;

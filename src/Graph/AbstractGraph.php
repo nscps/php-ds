@@ -48,11 +48,27 @@ abstract class AbstractGraph implements GraphInterface
     }
 
     /**
+     * @return int
+     */
+    public function getNumberOfNodes(): int
+    {
+        return $this->nbNodes;
+    }
+
+    /**
      * @inheritDoc
      */
     public function getEdges(): array
     {
         return $this->edges;
+    }
+
+    /**
+     * @return int
+     */
+    public function getNumberOfEdges(): int
+    {
+        return $this->nbEdges;
     }
 
     /**
